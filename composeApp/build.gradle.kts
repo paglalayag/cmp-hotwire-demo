@@ -64,6 +64,9 @@ kotlin {
             implementation(libs.androidx.lifecycle.runtime.compose)
 
             implementation(kotlin("test"))
+
+            implementation(libs.hotwire.core)
+            implementation(libs.hotwire.navigation)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
