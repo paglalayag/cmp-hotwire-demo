@@ -5,7 +5,7 @@ import assertk.assertThat
 import assertk.assertions.isEqualTo
 import org.junit.Test
 
-class SampleTest {
+class SmokeTest {
     @Test
     fun testPackageName() {
         val context = ApplicationProvider.getApplicationContext<android.content.Context>()
