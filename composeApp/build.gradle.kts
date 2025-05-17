@@ -24,6 +24,8 @@ kotlin {
                 implementation(libs.core.ktx)
                 implementation(libs.compose.ui.test.junit4.android)
                 debugImplementation(libs.compose.ui.test.manifest)
+                implementation(libs.espresso.core)
+                implementation(libs.espresso.web)
             }
         }
     }
