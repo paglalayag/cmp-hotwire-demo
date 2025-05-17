@@ -1,8 +1,8 @@
 package net.paglalayag.cmphotwiredemo
 
-import org.junit.Test
+import kotlin.test.Test
+import kotlin.test.assertEquals
 
-import org.junit.Assert.*
 
 /**
  * Example local unit test, which will execute on the development machine (host).
