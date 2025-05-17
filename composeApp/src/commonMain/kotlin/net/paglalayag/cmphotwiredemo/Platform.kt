@@ -1,0 +1,7 @@
+package net.paglalayag.cmphotwiredemo
+
+interface Platform {
+    val name: String
+}
+
+expect fun getPlatform(): Platform
