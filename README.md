@@ -13,5 +13,5 @@ The core functionality to be demonstrated is a shared database for local storage
 
 To run:
  - **Android** - Just run from Android Studio on a virtual or physical device
- - **ios** - on a mac, you can also run `iosMain`. You will need XCode (or its simulator) running.
+ - **ios** - on a mac, you can also run `iosMain`. You will need XCode (or its simulator) running. If you don't have a mac, you can try [docker-osx](https://github.com/sickcodes/Docker-OSX). It's a beast on system resources though!
  - **desktop** - from a terminal: `./gradlew run`
