@@ -8,6 +8,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 kotlin {
@@ -71,6 +72,8 @@ kotlin {
 
             implementation(libs.lexilabs.sound)
             implementation(libs.kotlinx.datetime)
+
+            implementation(libs.kotlin.serialization)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)

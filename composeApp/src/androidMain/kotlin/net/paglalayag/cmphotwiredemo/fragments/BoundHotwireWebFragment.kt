@@ -28,7 +28,9 @@ class BoundHotwireWebFragment : HotwireWebFragment() {
 
         return view
     }
-
+    fun setEpisodeFromBoundFragment(episodeUrl: String) {
+        println("setting episode: $episodeUrl from Bound hotwire fragment")
+    }
 }
 
 //    }

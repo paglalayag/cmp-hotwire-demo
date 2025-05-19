@@ -2,6 +2,7 @@ package net.paglalayag.cmphotwiredemo
 
 import android.app.Application
 import dev.hotwire.core.bridge.BridgeComponentFactory
+import dev.hotwire.core.bridge.KotlinXJsonConverter
 import dev.hotwire.core.config.Hotwire
 import dev.hotwire.core.turbo.config.PathConfiguration
 import dev.hotwire.navigation.config.registerBridgeComponents
@@ -27,5 +28,7 @@ class CMPHotwireDemoApplication : Application() {
         Hotwire.registerFragmentDestinations(
             BoundHotwireWebFragment::class
         )
+
+        Hotwire.config.jsonConverter = KotlinXJsonConverter()
     }
 }
