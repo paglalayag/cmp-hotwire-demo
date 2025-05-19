@@ -50,6 +50,7 @@ kotlin {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
         }
+
         commonMain.dependencies {
             implementation(compose.runtime)
             implementation(compose.foundation)
@@ -67,6 +68,9 @@ kotlin {
 
             implementation(libs.hotwire.core)
             implementation(libs.hotwire.navigation)
+
+            implementation(libs.lexilabs.sound)
+            implementation(libs.kotlinx.datetime)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)

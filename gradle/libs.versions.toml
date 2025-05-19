@@ -18,6 +18,9 @@ espresso = "3.6.1"
 
 hotwire = "1.1.2"
 
+lexilabs = "0.2.5"
+kotlinx-datetime = "0.6.1"
+
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
 androidx-lifecycle-viewmodel = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-viewmodel", version.ref = "androidx-lifecycle" }
@@ -35,6 +38,9 @@ espresso-web = { module = "androidx.test.espresso:espresso-web", version.ref = "
 
 hotwire-core = { module = "dev.hotwire:core", version.ref = "hotwire" }
 hotwire-navigation = { module = "dev.hotwire:navigation-fragments", version.ref = "hotwire" }
+
+lexilabs-sound = { group = "app.lexilabs.basic", name = "basic-sound" , version.ref = "lexilabs" }
+kotlinx-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime", version.ref = "kotlinx-datetime" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
