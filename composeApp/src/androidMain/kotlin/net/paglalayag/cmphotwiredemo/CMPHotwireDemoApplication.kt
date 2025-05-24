@@ -8,6 +8,7 @@ import dev.hotwire.core.turbo.config.PathConfiguration
 import dev.hotwire.navigation.config.registerBridgeComponents
 import dev.hotwire.navigation.config.registerFragmentDestinations
 import net.paglalayag.cmphotwiredemo.components.FavoriteToggleComponent
+import net.paglalayag.cmphotwiredemo.di.initKoin
 import net.paglalayag.cmphotwiredemo.fragments.BoundHotwireWebFragment
 
 class CMPHotwireDemoApplication : Application() {
@@ -17,6 +18,9 @@ class CMPHotwireDemoApplication : Application() {
         Hotwire.registerBridgeComponents(
             BridgeComponentFactory("favoriteToggle", ::FavoriteToggleComponent)
         )
+
+        initKoin {
+        }
 
         Hotwire.loadPathConfiguration(
             context = this,

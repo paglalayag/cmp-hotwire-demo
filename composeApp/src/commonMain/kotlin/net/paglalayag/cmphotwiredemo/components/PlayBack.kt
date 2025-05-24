@@ -31,6 +31,7 @@ import cmp_hotwire_demo.composeapp.generated.resources.play_icon
 import net.paglalayag.cmphotwiredemo.presentation.TimeAndEmitPlay
 import org.jetbrains.compose.resources.vectorResource
 
+
 @Composable
 fun PlayBack(
     modifier: Modifier = Modifier,
@@ -87,7 +88,10 @@ fun PlayBack(
     LaunchedEffect(duration) {
         println("TIME AND EMIT SET $audioFile")
         if(audioFile.isNotBlank()) {
-            timeAndEmit.initAudioController(playbackDuration = duration, audioFile = audioFile)
+            timeAndEmit.initAudioController(
+                playbackDuration = duration,
+                audioFile = audioFile
+            )
         }
     }
 

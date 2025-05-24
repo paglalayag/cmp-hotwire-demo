@@ -27,6 +27,8 @@ kotlin {
                 debugImplementation(libs.compose.ui.test.manifest)
                 implementation(libs.espresso.core)
                 implementation(libs.espresso.web)
+                implementation(libs.koin.test)
+                implementation(libs.koin.test.junit4)
             }
         }
     }
@@ -50,6 +52,9 @@ kotlin {
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
+
+            implementation(libs.koin.android)
+            implementation(libs.koin.androidx.compose)
         }
 
         commonMain.dependencies {
@@ -70,10 +75,15 @@ kotlin {
             implementation(libs.hotwire.core)
             implementation(libs.hotwire.navigation)
 
+
             implementation(libs.lexilabs.sound)
             implementation(libs.kotlinx.datetime)
 
             implementation(libs.kotlin.serialization)
+
+            implementation(libs.koin.compose)
+            implementation(libs.koin.compose.viewmodel)
+            api(libs.koin.core)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)

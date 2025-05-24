@@ -47,7 +47,7 @@ class FavoriteToggleComponent(
 
     private fun handleFavoriteToggleConnectMessage(data: MessageData) {
         println("bridge FavoriteToggle 'connect' message received with data: $data")
-        fragment.setEpisodeFromBoundFragment(data.episodeUrl)
+        fragment.setEpisodeFromBoundFragment(data)
     }
 
     private fun handleFavoriteToggleToggleMessage(data: MessageData) {
@@ -61,5 +61,6 @@ class FavoriteToggleComponent(
 
 @Serializable
 data class MessageData(
-    @SerialName("episode_url") val episodeUrl: String
+    @SerialName("episode_url") val episodeUrl: String,
+    @SerialName("episode_duration") val episodeDuration: String
 )

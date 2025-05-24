@@ -1,9 +1,6 @@
 package net.paglalayag.cmphotwiredemo
 
 import android.os.Bundle
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
-
 import androidx.activity.enableEdgeToEdge
 import android.view.View
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -46,10 +43,4 @@ class MainActivity : HotwireActivity() {
             view.visibility = if (it == tab) View.VISIBLE else View.GONE
         }
     }
-}
-
-@Preview
-@Composable
-fun AppAndroidPreview() {
-    App()
 }
