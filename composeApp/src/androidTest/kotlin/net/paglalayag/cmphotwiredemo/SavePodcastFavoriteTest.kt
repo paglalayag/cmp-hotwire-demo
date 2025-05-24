@@ -28,7 +28,7 @@ class PodcastFavoritesTest {
     @OptIn(ExperimentalTestApi::class)
     @Test
     fun testSavePodcastToFavorites() = runComposeUiTest {
-        val viewModel : PodcastsViewModel = PodcastsViewModel()
+        val viewModel = PodcastsViewModel()
         setContent {
             HotwireWebScreenRoot(viewModel)
         }
