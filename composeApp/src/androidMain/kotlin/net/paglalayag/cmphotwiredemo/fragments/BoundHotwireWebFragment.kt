@@ -9,7 +9,7 @@ import dev.hotwire.navigation.destinations.HotwireDestinationDeepLink
 import dev.hotwire.navigation.fragments.HotwireWebFragment
 import net.paglalayag.cmphotwiredemo.HotwireWebScreenRoot
 import net.paglalayag.cmphotwiredemo.R
-import net.paglalayag.cmphotwiredemo.components.MessageData
+import net.paglalayag.cmphotwiredemo.components.ConnectMessageData
 import net.paglalayag.cmphotwiredemo.domain.PodcastsAction
 import net.paglalayag.cmphotwiredemo.presentation.PodcastsViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -33,7 +33,7 @@ class BoundHotwireWebFragment : HotwireWebFragment() {
         return view
     }
     val viewModel by viewModel<PodcastsViewModel>()
-    fun setEpisodeFromBoundFragment(episodeData: MessageData) {
+    fun setEpisodeFromBoundFragment(episodeData: ConnectMessageData) {
         println("setting episode: ${episodeData.episodeUrl} from Bound hotwire fragment")
         val setEpisodeUrl = PodcastsAction.SetEpisodeURL(episodeData.episodeUrl, episodeData.episodeDuration)
         viewModel.onAction(setEpisodeUrl)
