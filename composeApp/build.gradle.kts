@@ -9,6 +9,9 @@ plugins {
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.kotlin.serialization)
+
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.room)
 }
 
 kotlin {
@@ -46,6 +49,10 @@ kotlin {
 
     jvm("desktop")
 
+    room {
+        schemaDirectory("$projectDir/schemas")
+    }
+
     sourceSets {
         val desktopMain by getting
 
@@ -75,7 +82,6 @@ kotlin {
             implementation(libs.hotwire.core)
             implementation(libs.hotwire.navigation)
 
-
             implementation(libs.lexilabs.sound)
             implementation(libs.kotlinx.datetime)
 
@@ -84,6 +90,9 @@ kotlin {
             implementation(libs.koin.compose)
             implementation(libs.koin.compose.viewmodel)
             api(libs.koin.core)
+
+            implementation(libs.androidx.room.runtime)
+            implementation(libs.sqlite.bundled)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
@@ -96,7 +105,9 @@ kotlin {
             implementation(kotlin("test-annotations-common"))
             implementation(libs.assertk)
         }
-
+        dependencies {
+            ksp(libs.androidx.room.compiler)
+        }
     }
 }
 

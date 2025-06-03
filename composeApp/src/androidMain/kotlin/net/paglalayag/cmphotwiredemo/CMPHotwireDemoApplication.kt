@@ -10,6 +10,7 @@ import dev.hotwire.navigation.config.registerFragmentDestinations
 import net.paglalayag.cmphotwiredemo.components.FavoriteToggleComponent
 import net.paglalayag.cmphotwiredemo.di.initKoin
 import net.paglalayag.cmphotwiredemo.fragments.BoundHotwireWebFragment
+import org.koin.android.ext.koin.androidContext
 
 class CMPHotwireDemoApplication : Application() {
     override fun onCreate() {
@@ -20,6 +21,7 @@ class CMPHotwireDemoApplication : Application() {
         )
 
         initKoin {
+            androidContext(this@CMPHotwireDemoApplication)
         }
 
         Hotwire.loadPathConfiguration(

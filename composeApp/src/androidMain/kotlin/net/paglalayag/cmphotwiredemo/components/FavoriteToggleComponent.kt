@@ -7,6 +7,7 @@ import dev.hotwire.core.bridge.Message
 import dev.hotwire.navigation.destinations.HotwireDestination
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import net.paglalayag.cmphotwiredemo.domain.PodcastsAction
 import net.paglalayag.cmphotwiredemo.fragments.BoundHotwireWebFragment
 
 class FavoriteToggleComponent(
@@ -54,13 +55,24 @@ class FavoriteToggleComponent(
         println("bridge FavoriteToggle 'connect' message received with data: $data")
 
         fragment.setEpisodeFromBoundFragment(data)
+
+        val responseData = SetFavoriteResponseData(
+            episodeUrl = data.episodeUrl,
+            isFavorite = fragment.checkIfEpisodeIsFavorite(data.episodeUrl)
+        )
+        val response = KotlinXJsonConverter().toJson(responseData)
+
+        replyTo("setFavorite", jsonData = response)
     }
 
     private fun handleFavoriteToggleToggleMessage(data: ToggleMessageData) {
         println("bridge FavoriteToggle 'toggle' message received with data: $data")
-        val responseData = ToggleMessageResponseData(
+
+        fragment.toggleEpisodeFromBoundFragment(data)
+
+        val responseData = SetFavoriteResponseData(
             episodeUrl = data.episodeUrl,
-            isFavorite = true
+            isFavorite = fragment.checkIfEpisodeIsFavorite(data.episodeUrl)
         )
         val response = KotlinXJsonConverter().toJson(responseData)
 
@@ -88,7 +100,7 @@ data class ToggleMessageData(
 )
 
 @Serializable
-data class ToggleMessageResponseData(
+data class SetFavoriteResponseData(
     @SerialName("episode_url") val episodeUrl: String,
     @SerialName("is_favorite") val isFavorite: Boolean
 )

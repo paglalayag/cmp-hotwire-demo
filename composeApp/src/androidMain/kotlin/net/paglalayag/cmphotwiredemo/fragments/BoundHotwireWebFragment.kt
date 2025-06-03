@@ -10,6 +10,7 @@ import dev.hotwire.navigation.fragments.HotwireWebFragment
 import net.paglalayag.cmphotwiredemo.HotwireWebScreenRoot
 import net.paglalayag.cmphotwiredemo.R
 import net.paglalayag.cmphotwiredemo.components.ConnectMessageData
+import net.paglalayag.cmphotwiredemo.components.ToggleMessageData
 import net.paglalayag.cmphotwiredemo.domain.PodcastsAction
 import net.paglalayag.cmphotwiredemo.presentation.PodcastsViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -37,5 +38,16 @@ class BoundHotwireWebFragment : HotwireWebFragment() {
         println("setting episode: ${episodeData.episodeUrl} from Bound hotwire fragment")
         val setEpisodeUrl = PodcastsAction.SetEpisodeURL(episodeData.episodeUrl, episodeData.episodeDuration)
         viewModel.onAction(setEpisodeUrl)
+    }
+
+    fun checkIfEpisodeIsFavorite(episodeUrl: String) : Boolean {
+        println("isFavorite for ${episodeUrl}: ${viewModel.state.value.isFavorite}")
+        return viewModel.state.value.isFavorite
+    }
+
+    fun toggleEpisodeFromBoundFragment(episodeData: ToggleMessageData) {
+        println("toggling episode: ${episodeData.episodeUrl} from Bound hotwire fragment")
+        val toggleEpisodeUrl = PodcastsAction.ToggleEpisodeURL(episodeData.episodeUrl)
+        viewModel.onAction(toggleEpisodeUrl)
     }
 }

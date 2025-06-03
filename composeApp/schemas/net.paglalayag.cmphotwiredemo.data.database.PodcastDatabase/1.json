@@ -1,0 +1,31 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "956880921e895220514fccd8b503b607",
+    "entities": [
+      {
+        "tableName": "PodcastEntity",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`episodeUrl` TEXT NOT NULL, PRIMARY KEY(`episodeUrl`))",
+        "fields": [
+          {
+            "fieldPath": "episodeUrl",
+            "columnName": "episodeUrl",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "episodeUrl"
+          ]
+        }
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '956880921e895220514fccd8b503b607')"
+    ]
+  }
+}
