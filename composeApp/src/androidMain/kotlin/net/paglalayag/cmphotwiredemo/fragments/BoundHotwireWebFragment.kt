@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.compose.ui.platform.ComposeView
 import dev.hotwire.navigation.destinations.HotwireDestinationDeepLink
 import dev.hotwire.navigation.fragments.HotwireWebFragment
-import net.paglalayag.cmphotwiredemo.HotwireWebScreenRoot
+import net.paglalayag.cmphotwiredemo.presentation.HotwireWebScreenRoot
 import net.paglalayag.cmphotwiredemo.R
 import net.paglalayag.cmphotwiredemo.components.ConnectMessageData
 import net.paglalayag.cmphotwiredemo.components.ToggleMessageData

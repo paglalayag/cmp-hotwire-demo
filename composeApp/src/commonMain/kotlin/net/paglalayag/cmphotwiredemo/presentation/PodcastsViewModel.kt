@@ -2,20 +2,16 @@ package net.paglalayag.cmphotwiredemo.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import io.github.vinceglb.filekit.list
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import net.paglalayag.cmphotwiredemo.data.repository.DefaultPodcastRepository
-import net.paglalayag.cmphotwiredemo.domain.Podcast
 import net.paglalayag.cmphotwiredemo.domain.PodcastsAction
 import net.paglalayag.cmphotwiredemo.domain.PodcastsState
 
@@ -78,6 +74,19 @@ class PodcastsViewModel(
                     _state.update {
                         it.copy(
                             isFavorite = isEpisodeFavorite(action.episodeUrl)
+                        )
+                    }
+                }
+            }
+            is PodcastsAction.OnPodcastClick -> {
+                viewModelScope.launch {
+                    println("SetEpisodeURL before update ${state.value}")
+                    _state.update {
+                        it.copy(
+                            episodeUrl = action.podcast.episodeUrl,
+                            episodeDuration = action.podcast.duration,
+                            isFavorite = true,
+                            episodeAudiofile = setEpisodeForPlayer(action.podcast.episodeUrl)
                         )
                     }
                 }

@@ -14,8 +14,14 @@ data class Tab(
             Tab(
                 name = "podcast",
                 path = "podcast",
-                menuId = R.id.main_nav_host,
+                menuId = R.id.bottom_nav_podcast,
                 navigatorHostId = R.id.podcast_fragment,
+            ),
+            Tab(
+                name = "favorites",
+                path = "favorites",
+                menuId = R.id.bottom_nav_favorites,
+                navigatorHostId = R.id.favorites_composable
             )
         )
     }

@@ -4,4 +4,8 @@
         android:id="@+id/bottom_nav_podcast"
         android:icon="@drawable/ic_tab_podcast"
         android:title="Podcast" />
+    <item
+        android:id="@+id/bottom_nav_favorites"
+        android:icon="@drawable/ic_tab_favorites"
+        android:title="Favorites" />
 </menu>

@@ -2,7 +2,6 @@ package net.paglalayag.cmphotwiredemo
 
 import androidx.compose.ui.test.ExperimentalTestApi
 import androidx.compose.ui.test.runComposeUiTest
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.espresso.matcher.ViewMatchers.withContentDescription
 import assertk.assertThat
@@ -12,8 +11,8 @@ import androidx.test.espresso.web.sugar.Web.onWebView
 import androidx.test.espresso.web.webdriver.DriverAtoms.findElement
 import androidx.test.espresso.web.webdriver.DriverAtoms.webClick
 import androidx.test.espresso.web.webdriver.Locator
+import net.paglalayag.cmphotwiredemo.presentation.HotwireWebScreenRoot
 import net.paglalayag.cmphotwiredemo.presentation.PodcastsViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SmokeTest {
     @Test
