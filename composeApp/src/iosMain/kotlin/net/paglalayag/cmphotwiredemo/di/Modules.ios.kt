@@ -1,6 +1,13 @@
 package net.paglalayag.cmphotwiredemo.di
 
+import io.ktor.client.engine.HttpClientEngine
+import io.ktor.client.engine.darwin.Darwin
+import net.paglalayag.cmphotwiredemo.data.database.DatabaseFactory
 import org.koin.core.module.Module
+import org.koin.dsl.module
 
 actual val platformModule: Module
-    get() = TODO("Not yet implemented")
+    get() = module {
+        single<HttpClientEngine> { Darwin.create() }
+        single { DatabaseFactory() }
+    }
