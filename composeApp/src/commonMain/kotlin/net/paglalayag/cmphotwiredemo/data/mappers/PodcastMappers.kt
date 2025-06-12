@@ -5,6 +5,16 @@ import net.paglalayag.cmphotwiredemo.domain.Podcast
 
 fun Podcast.toPodcastEntity(): PodcastEntity {
     return PodcastEntity(
-        episodeUrl = episodeUrl
+        episodeUrl = episodeUrl,
+        audioFilePath = audioFilePath!!,
+        duration = duration
+    )
+}
+
+fun PodcastEntity.toPodcast(): Podcast {
+    return  Podcast(
+        episodeUrl = episodeUrl,
+        duration = duration,
+        audioFilePath = audioFilePath
     )
 }

@@ -40,8 +40,10 @@ class BoundHotwireWebFragment : HotwireWebFragment() {
         viewModel.onAction(setEpisodeUrl)
     }
 
-    fun checkIfEpisodeIsFavorite(episodeUrl: String) : Boolean {
-        println("isFavorite for ${episodeUrl}: ${viewModel.state.value.isFavorite}")
+    fun checkIfEpisodeIsFavorite(episodeUrl: String) :Boolean {
+        println("checking for favorite: ${episodeUrl} from Bound hotwire fragment")
+        val isEpisodeFavorite = PodcastsAction.IsEpisodeFavorite(episodeUrl)
+        viewModel.onAction(isEpisodeFavorite)
         return viewModel.state.value.isFavorite
     }
 

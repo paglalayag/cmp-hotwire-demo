@@ -1,4 +1,3 @@
-@file:OptIn(ExperimentalBasicSound::class)
 package net.paglalayag.cmphotwiredemo.components
 
 import androidx.compose.foundation.background
@@ -24,7 +23,6 @@ import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
-import app.lexilabs.basic.sound.ExperimentalBasicSound
 import cmp_hotwire_demo.composeapp.generated.resources.Res
 import cmp_hotwire_demo.composeapp.generated.resources.pause_icon
 import cmp_hotwire_demo.composeapp.generated.resources.play_icon

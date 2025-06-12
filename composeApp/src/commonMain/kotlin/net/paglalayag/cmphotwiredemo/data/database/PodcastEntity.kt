@@ -5,5 +5,7 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class PodcastEntity(
-    @PrimaryKey(autoGenerate = false) val episodeUrl: String
+    @PrimaryKey(autoGenerate = false) val episodeUrl: String,
+    val audioFilePath: String,
+    val duration: Long
 )

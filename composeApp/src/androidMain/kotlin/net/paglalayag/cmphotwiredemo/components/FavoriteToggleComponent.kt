@@ -56,27 +56,13 @@ class FavoriteToggleComponent(
 
         fragment.setEpisodeFromBoundFragment(data)
 
-        val responseData = SetFavoriteResponseData(
-            episodeUrl = data.episodeUrl,
-            isFavorite = fragment.checkIfEpisodeIsFavorite(data.episodeUrl)
-        )
-        val response = KotlinXJsonConverter().toJson(responseData)
-
-        replyTo("setFavorite", jsonData = response)
+        replyWithFavoriteStatus(data.episodeUrl)
     }
 
     private fun handleFavoriteToggleToggleMessage(data: ToggleMessageData) {
         println("bridge FavoriteToggle 'toggle' message received with data: $data")
 
         fragment.toggleEpisodeFromBoundFragment(data)
-
-        val responseData = SetFavoriteResponseData(
-            episodeUrl = data.episodeUrl,
-            isFavorite = fragment.checkIfEpisodeIsFavorite(data.episodeUrl)
-        )
-        val response = KotlinXJsonConverter().toJson(responseData)
-
-        replyTo("setFavorite", jsonData = response)
     }
 
     private fun handleFavoriteToggleSetFavoriteMessage(data: ToggleMessageData) {
@@ -85,6 +71,17 @@ class FavoriteToggleComponent(
 
     private fun handleFavoriteToggleUnsupportedMessage(message: Message) {
         println("bridge FavoriteToggle unsupported message received with event: ${message.event}")
+    }
+
+    private fun replyWithFavoriteStatus(episodeUrl: String) {
+        val responseData = SetFavoriteResponseData(
+            episodeUrl = episodeUrl,
+            isFavorite = fragment.checkIfEpisodeIsFavorite(episodeUrl)
+        )
+
+        val response = KotlinXJsonConverter().toJson(responseData)
+        println("replying to bridge with ${responseData.isFavorite}")
+        replyTo("connect", jsonData = response)
     }
 }
 

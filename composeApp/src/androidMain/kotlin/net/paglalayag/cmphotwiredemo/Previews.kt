@@ -10,6 +10,7 @@ fun MainScreenPreview() {
     HotwireWebScreen(
         podcastsState = PodcastsState(
             episodeUrl = "https://paglalayag.net/assets/audio/jay-paglalayag-audio.mp3",
+            episodeAudiofile = "",
             episodeDuration = 345670
         )
     )

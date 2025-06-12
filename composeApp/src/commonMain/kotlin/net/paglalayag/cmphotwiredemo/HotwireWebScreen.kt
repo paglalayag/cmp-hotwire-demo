@@ -33,7 +33,7 @@ fun HotwireWebScreen(
             PlayBack(
                 backgroundColor = DarkRed,
                 duration = podcastsState.episodeDuration,
-                audioFile = podcastsState.episodeUrl,
+                audioFile = podcastsState.episodeAudiofile,
             )
         }
     }
