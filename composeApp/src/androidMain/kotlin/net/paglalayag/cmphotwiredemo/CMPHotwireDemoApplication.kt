@@ -7,6 +7,7 @@ import dev.hotwire.core.config.Hotwire
 import dev.hotwire.core.turbo.config.PathConfiguration
 import dev.hotwire.navigation.config.registerBridgeComponents
 import dev.hotwire.navigation.config.registerFragmentDestinations
+import dev.hotwire.navigation.fragments.HotwireWebFragment
 import net.paglalayag.cmphotwiredemo.components.FavoriteToggleComponent
 import net.paglalayag.cmphotwiredemo.di.initKoin
 import net.paglalayag.cmphotwiredemo.fragments.BoundHotwireWebFragment
@@ -34,7 +35,8 @@ class CMPHotwireDemoApplication : Application() {
 
         Hotwire.registerFragmentDestinations(
             BoundHotwireWebFragment::class,
-            FavoritesFragment::class
+            FavoritesFragment::class,
+            HotwireWebFragment::class
         )
 
         Hotwire.config.jsonConverter = KotlinXJsonConverter()
