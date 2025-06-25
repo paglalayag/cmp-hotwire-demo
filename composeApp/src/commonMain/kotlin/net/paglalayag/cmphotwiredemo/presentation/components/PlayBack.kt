@@ -14,6 +14,7 @@ import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
@@ -23,21 +24,24 @@ import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import cmp_hotwire_demo.composeapp.generated.resources.Res
 import cmp_hotwire_demo.composeapp.generated.resources.pause_icon
 import cmp_hotwire_demo.composeapp.generated.resources.play_icon
+import net.paglalayag.cmphotwiredemo.domain.PodcastsState
+import net.paglalayag.cmphotwiredemo.presentation.PodcastsViewModel
 import net.paglalayag.cmphotwiredemo.presentation.TimeAndEmitPlay
 import org.jetbrains.compose.resources.vectorResource
+import org.koin.compose.viewmodel.koinViewModel
 
 
 @Composable
 fun PlayBack(
+    playerState: PodcastsState,
     modifier: Modifier = Modifier,
     backgroundColor: Color,
-    duration: Long,
     playingIndex: Int = -1,
     currentIndex: Int = -1,
-    audioFile: String,
     updatePlayIndex: (index: Int) -> Unit = {}
 ) {
 
@@ -83,12 +87,12 @@ fun PlayBack(
         }
     }
 
-    LaunchedEffect(duration) {
-        println("TIME AND EMIT SET $audioFile")
-        if(audioFile.isNotBlank()) {
+    LaunchedEffect(playerState.episodeUrl) {
+        println("TIME AND EMIT SET ${playerState.episodeAudiofile}")
+        if(playerState.episodeAudiofile.isNotBlank()) {
             timeAndEmit.initAudioController(
-                playbackDuration = duration,
-                audioFile = audioFile
+                playbackDuration = playerState.episodeDuration,
+                audioFile = playerState.episodeAudiofile
             )
         }
     }
@@ -126,7 +130,7 @@ fun PlayBack(
         LinearProgressIndicator(
             modifier = Modifier.weight(1f),
             progress = {
-                (timeAndEmit.currentTime.value / duration.toFloat()).coerceIn(0.0F..1.0F)
+                (playerState.currentTime / playerState.episodeDuration.toFloat()).coerceIn(0.0F..1.0F)
 
             },
             trackColor = Color.LightGray,
@@ -135,7 +139,7 @@ fun PlayBack(
         )
 
         Text(
-            text = "${formatTime(timeAndEmit.currentTime.value)}/${formatTime(duration)}"
+            text = "${formatTime(playerState.currentTime)}/${formatTime(playerState.episodeDuration)}"
         )
     }
 }

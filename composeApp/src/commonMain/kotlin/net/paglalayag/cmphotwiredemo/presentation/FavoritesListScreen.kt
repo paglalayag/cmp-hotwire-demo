@@ -16,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.ViewModelStore
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import cmp_hotwire_demo.composeapp.generated.resources.Res
 import cmp_hotwire_demo.composeapp.generated.resources.no_favorites
@@ -59,9 +60,8 @@ fun FavoritesListScreen(
     ) {
         PlayBack(
             backgroundColor = Beige,
-            duration = podcastListState.episodeDuration,
-            audioFile = podcastListState.episodeAudiofile,
-        )
+            playerState = podcastListState
+            )
         Surface(
             modifier = Modifier
                 .weight(1f)
